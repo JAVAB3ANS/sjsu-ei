@@ -16,9 +16,9 @@
 			<div class="container">
 				<h1 class="title has-text-centered">SJSU Eligibility Index Calculator</h1>
 				<!-- GRADES -->
-				<div class="box" style="padding: 0 padding-right: 20px">
+				<div class="box" id="box">
 					<div class="columns">
-						<div class="column is-4 has-background-primary"
+						<div class="column is-4 has-background-primary" 
 							style="border-top-left-radius: 6px border-bottom-left-radius: 6px"> <!--Will collapse tabs when screen is less than 768px in width-->
 							<h4 class="title is-5 has-text-white">Grades</h4>
 							<h5 class="subtitle is-6 has-text-white">Maximum GPA for admissions is 4.2.</h5>
@@ -35,7 +35,7 @@
 					</div>
 				</div>
 				<!-- TEST SCORES -->
-				<div class="box" style="padding: 0 padding-right: 20px">
+				<div class="box" id="box">
 					<div class="columns">
 						<div class="column is-4 has-background-info"
 							style="border-top-left-radius: 6px border-bottom-left-radius: 6px"> <!--Will collapse tabs when screen is less than 768px in width-->
@@ -652,7 +652,11 @@
 		<!-- JAVASCRIPT -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="app.js"></script>
-		<script> document.body.style.backgroundColor = "#E2DCCD"</script>
+		<script> 
+			document.body.style.backgroundColor = "#E2DCCD";
+			document.getElementByiD("box").style.paddingRight = "20px";
+			document.getElementByiD("box").style.padding = "0";
+		</script>
 	</div>
 </body>
 </html>
