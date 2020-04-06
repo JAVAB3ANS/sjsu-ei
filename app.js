@@ -4,9 +4,9 @@ var app = new Vue({
 		W_CSU_GPA: 0, // --Mapped To--> (v-model="W_CSU_GPA")
 		SAT_EBRW: 0, // --Mapped To--> (v-model="SAT_EBRW")
 		SAT_MATH: 0, // --Mapped To--> (v-model="SAT_MATH")
-		EI: null; // --Mapped To--> {{ EI }}
+		EI: null // --Mapped To--> {{ EI }}
 		//Service_Area: false, --Mapped To--> (v-model="Service_Area")
-	}
+	},
 	methods: {
 		calculate: function() {
 			var EI = 0;
