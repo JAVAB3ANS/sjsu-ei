@@ -1,0 +1,61 @@
+jvu40@Jason-AL061NR MINGW64 ~/Documents/AP-Computer-Science-Principles-Create-Task (master)
+$ git log
+commit 55a167b (HEAD -> master, origin/master, origin/HEAD)
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:20:02 2020 -0700
+
+    Updated 4/6/2020
+
+commit 7056fa1
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:19:44 2020 -0700
+
+    Created 4/6/2020
+
+commit d52ab10
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:17:30 2020 -0700
+
+    Created 4/6/2020
+
+commit d7049c9
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:16:17 2020 -0700
+
+    Update
+
+commit 30f03c4
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:13:14 2020 -0700
+
+    Updated 4/6/2020
+
+commit 62aa9d5
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:08:56 2020 -0700
+
+    Updated 4/6/2020
+
+commit 976ffeb
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:08:29 2020 -0700
+
+    Updated 4/6/2020
+
+commit ca02cea
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:07:18 2020 -0700
+
+    Updated 4/6/2020
+
+commit d7365ad
+Author: Jason Vu <javu404@gmail.com>
+Date:   Mon Apr 6 15:59:25 2020 -0700
+
+    Created 4/6/2020
+
+commit 6b876ac
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 15:29:03 2020 -0700
+
+    Initial commit
