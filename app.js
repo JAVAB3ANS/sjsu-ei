@@ -1,21 +1,25 @@
+//parseInt = converting non-integer number to an integer
+//parseFloat = converting non-float (without decimal) to float (with decimal)
 var app = new Vue({
 	el: '#app',
 	data: {
 		W_CSU_GPA: 0, // --Mapped To--> (v-model="W_CSU_GPA")
 		SAT_EBRW: 0, // --Mapped To--> (v-model="SAT_EBRW")
 		SAT_MATH: 0, // --Mapped To--> (v-model="SAT_MATH")
+		SAT: 0, 
 		EI: null // --Mapped To--> {{ EI }}
 		//Service_Area: false, --Mapped To--> (v-model="Service_Area")
 	},
 	methods: {
 		calculate: function() {
 			var EI = 0;
-			EL += Math.min(2250, parseFloat(this.W_CSU_GPA) * 800);
-			EI += ((3 * parseInt(this.SAT_MATH * 3) + parseInt(this.SAT_EBRW)));
-			console.log(EI);
+			W_CSU_GPA = parseInt(this.W_CSU_GPA * 800);
+			SAT_MATH = parseInt(this.SAT_MATH * 3);
+			SAT = parseInt(this.SAT_MATH + this.SAT_EBRW)/2;
+			EI += parseInt(this.SAT + this.W_CSU_GPA);
 			this.EI = Math.floor(EI);
-		}
-	}
+		},
+	},
 })
 /* |Theoretical equation as expressed in Python|.
 
@@ -42,3 +46,4 @@ print("Eligbility Index: " + str(COE_ImpactionIndex));
 2) Multiply SAT-MATH by 3 and add it with SAT-ENGLISH
 3) Add SAT score with (GPA x 800)
 4) Voila! Your SJSU eligibility index score!
+*/
