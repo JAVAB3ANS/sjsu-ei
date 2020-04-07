@@ -4,22 +4,22 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="SJSU Eligibility Index Calculator">
-    	<meta name="keywords" content="San Jose State University, undergraduate admissions, freshman impaction">
-    	<meta name="author" content="Jason Anh Vu (u/jvu404)">
+	<meta name="keywords" content="San Jose State University, undergraduate admissions, freshman impaction">
+	<meta name="author" content="Jason Anh Vu (u/jvu404)">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
 	<link rel="icon" href="sjsu-logo.png">
 	<title>SJSU Eligibility Index Calculator</title>
 </head>
-<body>
+<body style="background-color: lightgray">
 	<div id="app">
 		<section class="section">
 			<div class="container">
 				<h1 class="title has-text-centered">SJSU Eligibility Index Calculator</h1>
 				<!-- GRADES -->
-				<div class="box" id="box">
+				<div class="box" style="padding: 0; padding-right: 20px;">
 					<div class="columns">
 						<div class="column is-4 has-background-primary" 
-							style="border-top-left-radius: 6px border-bottom-left-radius: 6px"> <!--Will collapse tabs when screen is less than 768px in width-->
+							style="border-top-left-radius: 6px; border-bottom-left-radius: 6px"> <!--Will collapse tabs when screen is less than 768px in width-->
 							<h4 class="title is-5 has-text-white">Grades</h4>
 							<h5 class="subtitle is-6 has-text-white">Maximum GPA for admissions is 4.2.</h5>
 						</div>
@@ -28,17 +28,17 @@
 								<label class="label">WEIGHTED CSU GPA</label>
 								<div class="control">
 									<input class="input" type="number" min="0" max="4.2" step="0.01"
-										placeholder="/4.2" v-model="W_CSU_GPA">
+										placeholder="/4.2" v-model="CSU_GPA">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!-- TEST SCORES -->
-				<div class="box" id="box">
+				<div class="box" style="padding: 0; padding-right: 20px;">
 					<div class="columns">
 						<div class="column is-4 has-background-info"
-							style="border-top-left-radius: 6px border-bottom-left-radius: 6px"> <!--Will collapse tabs when screen is less than 768px in width-->
+							style="border-top-left-radius: 6px; border-bottom-left-radius: 6px"> <!--Will collapse tabs when screen is less than 768px in width-->
 							<h4 class="title is-5 has-text-white">Test Scores</h4>
 							<h5 class="subtitle is-6 has-text-white">The theoretical maximum is 1600.</h5>
 						</div>
@@ -58,29 +58,27 @@
 						</div>
 					</div>
 				</div>
-				<!-- SERVICE AREA (Adds 0.25 to Weighted CSU GPA if box is ticked)
-				<div class="box" style="padding: 0 padding-right: 20px">
+				<!-- SERVICE AREA (Adds 0.25 to Weighted CSU GPA if box is ticked) -->
+				<div class="box" style="padding: 0; padding-right: 20px;">
 					<div class="columns">
-						<div class="column is-4 has-background-dark is-hidden-mobile"
-							style="border-top-left-radius: 6px border-bottom-left-radius: 6px">
+						<div class="column is-4 has-background-dark"
+							style="border-top-left-radius: 6px; border-bottom-left-radius: 6px"> <!--Will collapse tabs when screen is less than 768px in width-->
 							<h4 class="title is-5 has-text-white">Other Information</h4>
 						</div>
 						<div class="column is-8">
 							<div class="field">
 								<label class="checkbox">
-									<input type="checkbox" v-model="Service_Area">
+									<input type="checkbox" v-model="SERVICE_AREA">
 									Live in the service area of San Jose State University
 								</label>
 							</div>
 						</div>
 					</div>
 				</div>
-				-->
 				<!-- CALCULATIONS -->
 				<div class="has-text-centered">
 					<button class="button is-medium is-success" v-on:click="calculate">Calculate</button>
-				</div>
-				<br>
+				</div> <br>
 				<div class="box has-text-centered" v-if="EI !== null">
 					<h3 class="title is-4">Your SJSU EI is:</h3>
 					<h2 class="title is-2">{{ EI }}</h2>
@@ -652,11 +650,6 @@
 		<!-- JAVASCRIPT -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="app.js"></script>
-		<script> 
-			document.body.style.backgroundColor = "#E2DCCD";
-			document.getElementByiD("box").style.paddingRight = "20px";
-			document.getElementByiD("box").style.padding = "0";
-		</script>
 	</div>
 </body>
 </html>
