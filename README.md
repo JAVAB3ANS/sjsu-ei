@@ -9,7 +9,7 @@
 
 ## Author
 - [Jason Anh Vu](https://javu404.github.io/) ~ *Webpage Author, Programmer, & Student at Cristo Rey San Jose Jesuit High School*
-- [Aditya Rathod (u/WizardApple)](https://reddit.com/user/WizardApple) ~ Credited at bottom of my webpage
+- Aditya Rathod: [applecrazy](https://github.com/applecrazy)([(u/WizardApple)](https://reddit.com/user/WizardApple) ~ Credited at bottom of my webpage
 
 ## License
 [MIT](https://opensource.org/licenses/MIT) © 2020 Jason Anh Vu
