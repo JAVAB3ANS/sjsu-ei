@@ -12,15 +12,15 @@ var app = new Vue({
 	},
 	methods: {
 		calculate: function() {
-			var EI = 0;
-			EI += ((parseInt(this.SAT_EBRW) + parseInt(this.SAT_MATH * 3))/2);
-			EI += parseFloat(this.CSU_GPA) * 800;
-			this.EI = EI;
+			var EI = 0; //changes from "null" to 0 when "calculate" button is pressed
+			EI += (Math.min(800, parseInt(this.SAT_EBRW)) + Math.min(800, parseInt(this.SAT_MATH)) * 3)/2; //values must be less than or equal to 800
+			EI += Math.min(4.2, parseFloat(this.CSU_GPA)) * 800; //value must be less than or equal to 4.2
+			this.EI = EI; // --renders output in {{ EI }}
 		},
 	},
 })
 
-/* |Algorithm:|
+/* |SJSU CSU Algorithm:|
 1) Multiply SAT-MATH by 3 
 2) Add SAT-MATH with SAT-ENGLISH
 3) Divide SAT by 2
