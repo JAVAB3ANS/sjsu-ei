@@ -15,7 +15,8 @@ var app = new Vue({
 			var EI = 0; //changes from "null" to 0 when "calculate" button is pressed
 			EI += (Math.min(800, parseInt(this.SAT_EBRW)) + Math.min(800, parseInt(this.SAT_MATH)) * 3)/2; //values must be less than or equal to 800
 			EI += Math.min(4.2, parseFloat(this.CSU_GPA)) * 800; //value must be less than or equal to 4.2
-			this.EI = EI; // --renders output in {{ EI }}
+			EI += this.SERVICE_AREA ? 200 : 0; //Adds 200 points to EI if box is ticked
+			this.EI = EI; // renders output in {{ EI }}
 		},
 	},
 })
