@@ -1,6 +1,96 @@
-jvu40@Jason-AL061NR MINGW64 ~/Documents/AP-Computer-Science-Principles-Create-Task (master)
+jvu40@Jason-AL061NR MINGW64 ~/Documents/AP-CSP-CreateTask (master)
 $ git log
-commit 55a167b (HEAD -> master, origin/master, origin/HEAD)
+commit 830abfa (HEAD -> master, origin/master, origin/HEAD)
+Author: Jason Vu <javu404@gmail.com>
+Date:   Wed Apr 8 15:55:06 2020 -0700
+
+    4/8/20
+
+commit 80e762a
+Author: Jason Vu <javu404@gmail.com>
+Date:   Wed Apr 8 13:53:49 2020 -0700
+
+    4/8/20
+
+commit 611251a
+Author: Jason Vu <javu404@gmail.com>
+Date:   Wed Apr 8 12:15:08 2020 -0700
+
+    4/8/20
+
+commit fdf12d6
+Author: Jason Vu <javu404@gmail.com>
+Date:   Wed Apr 8 11:19:40 2020 -0700
+
+    4/8/20
+
+commit 62f9729
+Author: Jason Vu <javu404@gmail.com>
+Date:   Tue Apr 7 09:30:10 2020 -0700
+
+    4/7/2020
+
+commit 3a46980
+Author: Jason Vu <javu404@gmail.com>
+Date:   Tue Apr 7 08:32:35 2020 -0700
+
+    4/7/20
+
+commit a9a9066
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 17:02:49 2020 -0700
+
+    Update index.html
+
+commit 2635a76
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 17:01:47 2020 -0700
+
+    Update README.md
+
+commit d7f4d4e
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 17:01:15 2020 -0700
+
+    Update README.md
+
+commit 46e2f06
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 17:00:23 2020 -0700
+
+    Update README.md
+
+commit 31ea9b0
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:59:08 2020 -0700
+
+    Updated 4/6/20
+
+commit dbac362
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:57:05 2020 -0700
+
+    Updated 4/6/20
+
+commit 794555b
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:56:35 2020 -0700
+
+    Updated 4/6/20
+
+commit 28ec8cc
+Author: Jason Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:27:28 2020 -0700
+
+    Updated 4/6/20
+
+commit f8d8c09
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Mon Apr 6 16:24:12 2020 -0700
+
+    Created 4/6/2020
+
+commit 55a167b
 Author: Jason Anh Vu <javu404@gmail.com>
 Date:   Mon Apr 6 16:20:02 2020 -0700
 
