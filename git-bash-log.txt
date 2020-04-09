@@ -1,6 +1,30 @@
-jvu40@Jason-AL061NR MINGW64 ~/Documents/AP-CSP-CreateTask (master)
+jvu40@Jason-AL061NR MINGW64 /c/users/jvu40/documents/AP-CSP-CreateTask (master)
 $ git log
-commit 830abfa (HEAD -> master, origin/master, origin/HEAD)
+commit 3220930 (HEAD -> master, origin/master, origin/HEAD)
+Author: Jason Vu <javu404@gmail.com>
+Date:   Thu Apr 9 15:39:54 2020 -0700
+
+    4/9/20
+
+commit 9680a24
+Author: Jason Vu <javu404@gmail.com>
+Date:   Thu Apr 9 15:37:33 2020 -0700
+
+    4/9/20
+
+commit d35a49f
+Author: Jason Vu <javu404@gmail.com>
+Date:   Thu Apr 9 15:34:08 2020 -0700
+
+    4/9/20
+
+commit 65bc85d
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Wed Apr 8 19:02:50 2020 -0700
+
+    Updated 4/8/20
+
+commit 830abfa
 Author: Jason Vu <javu404@gmail.com>
 Date:   Wed Apr 8 15:55:06 2020 -0700
 
