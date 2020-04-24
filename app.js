@@ -18,7 +18,7 @@ var app = new Vue({
 			console.log("EI at initialization: " + EI); //console log at init
 			EI += Math.min(4.2, parseFloat(this.CSU_GPA)) * 800; //value must be less than or equal to 4.2
 			EI += (Math.min(800, parseInt(this.SAT_EBRW)) + Math.min(800, parseInt(this.SAT_MATH)) * 3)/2; //values must be less than or equal to 800
-			if (Math.max(0, parseFloat(this.SERVICE_AREA)) >= 0 && Math.max(0, parseFloat(this.SERVICE_AREA) <= 20)) {
+			if (Math.max(0, parseFloat(this.SERVICE_AREA)) > 0 && Math.max(0, parseFloat(this.SERVICE_AREA) <= 20)) {
 				EI += 200; //will add 200 points to EI if greater than 0 and less than or equal to 20
 			} else {
 				EI = EI; //will remain the same if greater than 20
