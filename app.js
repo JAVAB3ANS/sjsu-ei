@@ -8,8 +8,8 @@ var app = new Vue({
 		SAT_EBRW: 0, // --Mapped To--> (v-model="SAT_EBRW")
 		SAT_MATH: 0, // --Mapped To--> (v-model="SAT_MATH")
 		SERVICE_AREA: 0, // --Mapped To--> (v-model="SERVICE_AREA")
-		STANDARD: 2950, 	
-		DECISION: true,
+		STANDARD: 2950, // Minimum standard for CSU eligibility index
+		DECISION: true, //either evaluates to Met, Exceeded, Transcended, or Haven't Met Requirements
 		EI: null // --Mapped To--> {{ EI }}
 	},
 	methods: {
