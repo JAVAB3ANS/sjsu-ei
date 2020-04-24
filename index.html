@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +61,7 @@
 						</div>
 					</div>
 				</div>
-				<!-- SERVICE AREA -->
+				<!-- OTHER INFORMATION -->
 				<div class="box" style="padding: 0; padding-right: 20px;">
 					<div class="columns">
 						<div class="column is-4 has-background-dark"
@@ -69,13 +70,13 @@
 						</div>
 						<div class="column is-8">
 							<div class="field">
-								<label class="checkbox">
-									<input type="checkbox" v-model="SERVICE_AREA">
-									Live in the service area of San Jose State University
-								</label>
+								<label class="label"> How far in miles is your current high school from San Jose State University? </label>
+								<div class="control">
+									<input class="input" type="number" min="0" max="20" step="1" placeholder="/0" v-model="SERVICE_AREA">
+								</div>
 							</div>
 						</div>
-					</div>
+					</div>		
 				</div>
 				<!-- CALCULATIONS -->
 				<div class="has-text-centered">
@@ -85,12 +86,19 @@
 					<h3 class="title is-4">Your SJSU EI is:</h3>
 					<h2 class="title is-2">{{ EI }}</h2>
 					<span>
-						<a target="_blank" href="https://www.reddit.com/r/ApplyingToCollege/comments/fxjdzz/sjsu_admissions_ei_calculator/?utm_source=share&utm_medium=ios_app&utm_name=iossmf">Share and compare your EI here!</a>
-					</span>	
+						<a href="#table">Check out the major-specific impaction threshold table below!</a>
+					</span>
 				</div>
-				<!-- FREQUENTLY-ASKED QUESTIONS -->
+				<div class="box has-text-centered" v-if="DECISION !== true">
+					<h3 class="title is-4">Your SJSU decision is: </h3>
+					<h2 class="title is-3"><i>{{ DECISION }}</i></h2>
+					<span>
+						<a target="_blank" href="https://www.sjsu.edu/freshmanadmissions/have-applied/admission-status/index.html">Admission Status Information</a>
+					</span>
+				</div>
+				<!-- FREQUENTLY-ASKED QUESTIONS -->	
 				<section class="hero is-primary welcome is-small">
-					<div class="hero-body">
+					<div class="hero-body has-background-info">
 						<div>
 							<h1 class="title"> FAQs </h1>
 						</div>
@@ -130,6 +138,17 @@
 					<p><strong>What is a good EI score?/What is an EI score that will get me in?</strong></p>
 					<p>There's an eligibility index chart that SJSU puts on their <a target="_blank" href="https://www.sjsu.edu/admissions/impaction/impactionresultsfreshmen/index.html">website</a> for Fall 2020<br>
 					Or you could look up your specific undergraduate major (program of study) here: </p> <br>
+				</div>
+				<section class="hero is-primary welcome is-small">
+					<a id="table">
+						<div class="hero-body has-background-dark">
+							<div>
+								<h1 class="title"> Impaction Threshold </h1>
+							</div>
+						</div>
+					</a>
+				</section>
+				<div class="box">
 					<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
 						<thead>
 							<tr>
@@ -652,7 +671,7 @@
 							  <td>^This major did not have additional capacity to admit applicants as alternate majors.</td>
 						   </tr>
 						</tfoot>
-					</table>
+					</table> 
 				</div>
 			</div>
 		</section>
