@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,8 +29,7 @@
 							<div class="field">
 								<label class="label">WEIGHTED CSU GPA</label>
 								<div class="control">
-									<input class="input" type="number" min="0" max="5" step="0.01"
-										placeholder="/4.2" v-model="CSU_GPA">
+									<input class="input" type="number" min="0" max="5" step="0.01" placeholder="/4.2" v-model="CSU_GPA">
 								</div>
 							</div>
 						</div>
@@ -84,14 +81,14 @@
 					<button class="button is-medium is-success" v-on:click="calculate">Calculate</button>
 				</div> <br>
 				<div class="box has-text-centered" v-if="EI !== null">
-					<h3 class="title is-4">Your SJSU EI is:</h3>
-					<h2 class="title is-2">{{ EI }}</h2>
+					<h3 class="title is-3">Your SJSU EI is: <i><u> {{ EI }} </u></i></h3>
+					<h3 class="title is-3">Your SJSU COE EI is: <i><u> {{ COE_EI }} </u></i></h3>
 					<span>
 						<a href="#table">Check out the major-specific impaction threshold table below!</a>
 					</span>
 				</div>
-				<div class="box has-text-centered" v-if="DECISION !== true">
-					<h3 class="title is-4">Your SJSU decision is: </h3>
+				<div class="box has-text-centered" v-if="DECISION !== null">
+					<h3 class="title is-4">Your SJSU projected decision	 is: </h3>
 					<h2 class="title is-3"><i>{{ DECISION }}</i></h2>
 					<span>
 						<a target="_blank" href="https://www.sjsu.edu/freshmanadmissions/have-applied/admission-status/index.html">Admission Status Information</a>
@@ -99,7 +96,7 @@
 				</div>
 				<!-- FREQUENTLY-ASKED QUESTIONS -->	
 				<section class="hero is-primary welcome is-small">
-					<div class="hero-body has-background-info">
+					<div class="box hero-body has-background-info">
 						<div>
 							<h1 class="title"> FAQs </h1>
 						</div>
@@ -142,9 +139,9 @@
 				</div>
 				<section class="hero is-primary welcome is-small">
 					<a id="table">
-					<div class="hero-body has-background-dark">
+					<div class="box hero-body has-background-dark">
 						<div>
-							<h1 class="title"> Impaction Threshold </h1>
+							<h1 class="title"> Major-Specific Impaction Threshold </h1>
 						</div>
 					</div>
 					</a>
