@@ -10,7 +10,7 @@ var app = new Vue({
 		SERVICE_AREA: 0, // --Mapped To--> (v-model="SERVICE_AREA")
 		STANDARD: 2950, // Minimum standard for CSU eligibility index
 		DECISION: null, // Either evaluates to Met, Exceeded, Transcended, or Haven't Met Requirements
-		EI: null // --Mapped To--> {{ EI }}
+		EI: null, // --Mapped To--> {{ EI }}
 	},
 	methods: {
 		calculate: function() {
@@ -22,7 +22,7 @@ var app = new Vue({
 			} else {
 				EI = EI; //will remain the same if greater than 20
 			}
-			this.EI = EI; // renders output in {{ EI }}
+			this.EI = EI; // sets up output in {{ EI }}
 			
 			var COE_EI = 0; //changes from "null" to 0 when "calculate" button is pressed
 			COE_EI += Math.min(4.2, parseFloat(this.CSU_GPA)) * 800; //value must be less than or equal to 4.2
@@ -32,29 +32,26 @@ var app = new Vue({
 			} else {
 				COE_EI = COE_EI; //will remain the same if greater than 20
 			}
-			this.COE_EI = COE_EI; // renders output in {{ COE_EI }}
-			
-			DECISION = true;
-			
-			while (DECISION == true) {
-				if (this.EI >= Math.min(2950, parseInt(this.STANDARD)) && this.EI <= Math.max(3750, parseInt(this.STANDARD))) { // EI ≥ 2950 and EI ≤ 3750 == met requirements
-					DECISION = "You've met minimum requirements for undergraduate admission.";
-					this.DECISION = DECISION;
-					console.log(DECISION);
-				} else if (this.EI >= Math.min(3750, parseInt(this.STANDARD)) && (this.EI <= Math.max(4825, parseInt(this.STANDARD)))) { // EI ≥ 3750 and EI ≤ 4825 == exceeded requirements
-					DECISION = "You've exceeded minimum requirements for undergraduate admission.";
-					this.DECISION = DECISION;
-					console.log(DECISION);
-				} else if (this.EI > Math.min(4825, parseInt(this.STANDARD))) { // EI ≥ 4825 == transcended requirements
-					DECISION = "You've transcended minimum requirements for undergraduate admission.";
-					this.DECISION = DECISION;
-					console.log(DECISION);
-				} else { // EI < 2950 == haven't met requirements
-					DECISION = "You've not met minimum requirements for undergraduate admission";
-					this.DECISION = DECISION;
-					console.log(DECISION);			
-				}
+			this.COE_EI = COE_EI; // sets up output in {{ COE_EI }}
+		
+			if (this.EI >= Math.min(2950, parseInt(this.STANDARD)) && this.EI <= Math.max(3750, parseInt(this.STANDARD))) { // EI ≥ 2950 and EI ≤ 3750 == met requirements
+				DECISION = "You've met minimum requirements for undergraduate admission.";
+				this.DECISION = DECISION;
+				console.log(DECISION);
+			} else if (this.EI >= Math.min(3750, parseInt(this.STANDARD)) && (this.EI <= Math.max(4825, parseInt(this.STANDARD)))) { // EI ≥ 3750 and EI ≤ 4825 == exceeded requirements
+				DECISION = "You've exceeded minimum requirements for undergraduate admission.";
+				this.DECISION = DECISION;
+				console.log(DECISION);
+			} else if (this.EI > Math.min(4825, parseInt(this.STANDARD))) { // EI ≥ 4825 == transcended requirements
+				DECISION = "You've transcended minimum requirements for undergraduate admission.";
+				this.DECISION = DECISION;
+				console.log(DECISION);
+			} else { // EI < 2950 == haven't met requirements
+				DECISION = "You've not met minimum requirements for undergraduate admission";
+				this.DECISION = DECISION;
+				console.log(DECISION);			
 			}
+			
 			console.log("Your SJSU EI is: " + EI); //console log at finish
 			console.log("Your SJSU COE EI is: " + COE_EI); //console log at finish,
 		}
