@@ -21,7 +21,7 @@ var app = new Vue({
 			if (Math.max(0, parseFloat(this.SERVICE_AREA)) > 0 && Math.max(0, parseFloat(this.SERVICE_AREA) <= 20)) {
 				EI += 200; //will add 200 points to EI if greater than 0 and less than or equal to 20
 			} else {
-				EI = EI; //will remain the same if greater than 20
+				EI += 0; //will remain the same if greater than 20
 			}
 			this.EI = EI; // sets up output in {{ EI }}
 			
@@ -31,7 +31,7 @@ var app = new Vue({
 			if (Math.max(0, parseFloat(this.SERVICE_AREA)) > 0 && Math.max(0, parseFloat(this.SERVICE_AREA) <= 20)) {
 				COE_EI += 200; //will add 200 points to COE_EI if greater than 0 and less than or equal to 20
 			} else {
-				COE_EI = COE_EI; //will remain the same if greater than 20
+				COE_EI += 0; //will remain the same if greater than 20
 			}
 			this.COE_EI = COE_EI; // sets up output in {{ COE_EI }}
 		
@@ -54,7 +54,7 @@ var app = new Vue({
 			}
 			
 			console.log("Your SJSU EI is: " + EI); //console log at finish
-			console.log("Your SJSU COE EI is: " + COE_EI); //console log at finish,
+			console.log("Your SJSU COE EI is: " + COE_EI); //console log at finish
 		}
 	},
 })
