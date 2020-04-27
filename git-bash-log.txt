@@ -1,6 +1,60 @@
-jvu40@Jason-AL061NR MINGW64 /c/users/jvu40/documents/AP-CSP-CreateTask (master)
-$ git log
-commit 3220930 (HEAD -> master, origin/master, origin/HEAD)
+jvu40@Jason-AL061NR MINGW64 ~/Documents/AP-CSP-CreateTask (master)
+$ git log --author="Jason Vu"
+commit d740499 (HEAD -> master, origin/master, origin/HEAD)
+Author: Jason Vu <javu404@gmail.com>
+Date:   Sun Apr 26 20:42:23 2020 -0700
+
+    4/26/20
+
+commit 57cfb02
+Author: Jason Vu <javu404@gmail.com>
+Date:   Fri Apr 24 20:28:10 2020 -0700
+
+    Update 4/24/20
+
+commit 48fe542
+Author: Jason Vu <javu404@gmail.com>
+Date:   Fri Apr 24 20:25:19 2020 -0700
+
+    4/24/20
+
+commit ac29c1a
+Author: Jason Vu <javu404@gmail.com>
+Date:   Fri Apr 24 16:23:37 2020 -0700
+
+    4/24/20
+
+commit f66892f
+Author: Jason Vu <javu404@gmail.com>
+Date:   Fri Apr 24 15:54:43 2020 -0700
+
+    4/24/20
+
+commit 07a4c0c
+Author: Jason Vu <javu404@gmail.com>
+Date:   Fri Apr 24 15:34:52 2020 -0700
+
+    Updated 4/24/20
+
+commit 74973f1
+Author: Jason Vu <javu404@gmail.com>
+Date:   Fri Apr 24 14:41:17 2020 -0700
+
+    4/24/20
+
+commit 0ea439e
+Author: Jason Vu <javu404@gmail.com>
+Date:   Fri Apr 24 14:36:03 2020 -0700
+
+    Updated 4/24/20
+
+commit 1969da5
+Author: Jason Vu <javu404@gmail.com>
+Date:   Thu Apr 9 15:42:23 2020 -0700
+
+    4/9/20
+
+commit 3220930
 Author: Jason Vu <javu404@gmail.com>
 Date:   Thu Apr 9 15:39:54 2020 -0700
 
@@ -17,12 +71,6 @@ Author: Jason Vu <javu404@gmail.com>
 Date:   Thu Apr 9 15:34:08 2020 -0700
 
     4/9/20
-
-commit 65bc85d
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Wed Apr 8 19:02:50 2020 -0700
-
-    Updated 4/8/20
 
 commit 830abfa
 Author: Jason Vu <javu404@gmail.com>
@@ -60,107 +108,11 @@ Date:   Tue Apr 7 08:32:35 2020 -0700
 
     4/7/20
 
-commit a9a9066
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 17:02:49 2020 -0700
-
-    Update index.html
-
-commit 2635a76
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 17:01:47 2020 -0700
-
-    Update README.md
-
-commit d7f4d4e
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 17:01:15 2020 -0700
-
-    Update README.md
-
-commit 46e2f06
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 17:00:23 2020 -0700
-
-    Update README.md
-
-commit 31ea9b0
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 16:59:08 2020 -0700
-
-    Updated 4/6/20
-
-commit dbac362
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 16:57:05 2020 -0700
-
-    Updated 4/6/20
-
-commit 794555b
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 16:56:35 2020 -0700
-
-    Updated 4/6/20
-
 commit 28ec8cc
 Author: Jason Vu <javu404@gmail.com>
 Date:   Mon Apr 6 16:27:28 2020 -0700
 
     Updated 4/6/20
-
-commit f8d8c09
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 16:24:12 2020 -0700
-
-    Created 4/6/2020
-
-commit 55a167b
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 16:20:02 2020 -0700
-
-    Updated 4/6/2020
-
-commit 7056fa1
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 16:19:44 2020 -0700
-
-    Created 4/6/2020
-
-commit d52ab10
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 16:17:30 2020 -0700
-
-    Created 4/6/2020
-
-commit d7049c9
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 16:16:17 2020 -0700
-
-    Update
-
-commit 30f03c4
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 16:13:14 2020 -0700
-
-    Updated 4/6/2020
-
-commit 62aa9d5
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 16:08:56 2020 -0700
-
-    Updated 4/6/2020
-
-commit 976ffeb
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 16:08:29 2020 -0700
-
-    Updated 4/6/2020
-
-commit ca02cea
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 16:07:18 2020 -0700
-
-    Updated 4/6/2020
 
 commit d7365ad
 Author: Jason Vu <javu404@gmail.com>
@@ -168,8 +120,3 @@ Date:   Mon Apr 6 15:59:25 2020 -0700
 
     Created 4/6/2020
 
-commit 6b876ac
-Author: Jason Anh Vu <javu404@gmail.com>
-Date:   Mon Apr 6 15:29:03 2020 -0700
-
-    Initial commit
