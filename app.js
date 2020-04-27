@@ -11,10 +11,11 @@ var app = new Vue({
 		STANDARD: 2950, // Minimum standard for CSU eligibility index
 		DECISION: null, // Either evaluates to Met, Exceeded, Transcended, or Haven't Met Requirements
 		EI: null, // --Mapped To--> {{ EI }}
+		COE_EI: null, // --Mapped To--> {{ COE_EI }}
 	},
 	methods: {
 		calculate: function() {
-			var EI = 0; //changes from "null" to 0 when "calculate" button is pressed
+			EI = 0; //changes from "null" to 0 when "calculate" button is pressed
 			EI += Math.min(4.2, parseFloat(this.CSU_GPA)) * 800; //value must be less than or equal to 4.2
 			EI += (Math.min(800, parseInt(this.SAT_EBRW)) + Math.min(800, parseInt(this.SAT_MATH))); //values must be less than or equal to 800
 			if (Math.max(0, parseFloat(this.SERVICE_AREA)) > 0 && Math.max(0, parseFloat(this.SERVICE_AREA) <= 20)) {
@@ -24,7 +25,7 @@ var app = new Vue({
 			}
 			this.EI = EI; // sets up output in {{ EI }}
 			
-			var COE_EI = 0; //changes from "null" to 0 when "calculate" button is pressed
+			COE_EI = 0; //changes from "null" to 0 when "calculate" button is pressed
 			COE_EI += Math.min(4.2, parseFloat(this.CSU_GPA)) * 800; //value must be less than or equal to 4.2
 			COE_EI += (Math.min(800, parseInt(this.SAT_EBRW)) + Math.min(800, parseInt(this.SAT_MATH))*3)/2; //values must be less than or equal to 800
 			if (Math.max(0, parseFloat(this.SERVICE_AREA)) > 0 && Math.max(0, parseFloat(this.SERVICE_AREA) <= 20)) {
