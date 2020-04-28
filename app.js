@@ -2,12 +2,12 @@
 //parseFloat = converting non-float (without decimal) to float (with decimal)
 
 var app = new Vue({
-	el: '#app',
+	el: "#app",
 	data: {
-		CSU_GPA: 0, // --Mapped To--> (v-model="CSU_GPA")
-		SAT_EBRW: 0, // --Mapped To--> (v-model="SAT_EBRW")
-		SAT_MATH: 0, // --Mapped To--> (v-model="SAT_MATH")
-		SERVICE_AREA: 0, // --Mapped To--> (v-model="SERVICE_AREA")
+		CSU_GPA: "", // --Mapped To--> (v-model="CSU_GPA")
+		SAT_EBRW: "", // --Mapped To--> (v-model="SAT_EBRW")
+		SAT_MATH: "", // --Mapped To--> (v-model="SAT_MATH")
+		SERVICE_AREA: "", // --Mapped To--> (v-model="SERVICE_AREA")
 		STANDARD: 2950, // Minimum standard for CSU eligibility index
 		DECISION: null, // Either evaluates to Met, Exceeded, Transcended, or Haven't Met Requirements
 		EI: null, // --Mapped To--> {{ EI }}
@@ -59,11 +59,35 @@ var app = new Vue({
 	},
 })
 
-/* |SJSU CSU Algorithm:|
-1) Multiply SAT-MATH by 3 
-2) Add SAT-MATH with SAT-ENGLISH
+function four_strokes(element) { //4 characters only for CSU weighted GPA
+    var max_chars = 4; //only allows 4 characters at the maximum
+    if(element.value.length > max_chars) {
+        element.value = element.value.substr(0, max_chars);
+    }	
+}
+
+function three_strokes(element) { //3 characters only for SAT EBRW, SAT MATH, and SERVICE AREA
+    var max_chars = 3; //only allows 3 characters at the maximum
+    if(element.value.length > max_chars) {
+        element.value = element.value.substr(0, max_chars);
+    }	
+}
+
+/* 
+|SJSU Normal EI Algorithm:|
+1) Add SAT MATH to SAT ENGLISH
+2) Multiply CSU GPA to 800
+3) Add CSU GPA to SAT 
+4) Voila! Your SJSU normal eligibility index score!
+
+|SJSU CSU COE EI Algorithm:|
+1) Multiply SAT MATH by 3 
+2) Add SAT MATH with SAT-ENGLISH
 3) Divide SAT by 2
-4) Multiply CSU_GPA by 800
-4) Add SAT with CSU_GPA
+4) Multiply CSU GPA by 800
+4) Add SAT with CSU GPA
 5) Voila! Your SJSU eligibility index score!
 */
+
+
+
