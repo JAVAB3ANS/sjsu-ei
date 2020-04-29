@@ -57,21 +57,19 @@ var app = new Vue({
 			console.log("Your SJSU COE EI is: " + COE_EI); //console log at finish
 		}
 	},
-})
+});
 
-function four_strokes(element) { //4 characters only for CSU weighted GPA
-    var max_chars = 4; //only allows 4 characters at the maximum
-    if(element.value.length > max_chars) {
-        element.value = element.value.substr(0, max_chars);
-    }	
-}
+function limitKeypress(event, value, maxLength) {
+    if (value != undefined && value.toString().length >= maxLength) {
+        event.preventDefault();
+    }
+};
 
-function three_strokes(element) { //3 characters only for SAT EBRW and SAT MATH
-    var max_chars = 3; //only allows 3 characters at the maximum
-    if(element.value.length > max_chars) {
-        element.value = element.value.substr(0, max_chars);
-    }	
-}
+document.onkeydown = function (e) {
+	if ((e.keyCode === 189) || (e.keyCode === 16 || e.keyCode === 187)) {
+		event.preventDefault();
+	}
+};
 
 /* 
 |SJSU Normal EI Algorithm:|
@@ -88,6 +86,3 @@ function three_strokes(element) { //3 characters only for SAT EBRW and SAT MATH
 4) Add SAT with CSU GPA
 5) Voila! Your SJSU eligibility index score!
 */
-
-
-
