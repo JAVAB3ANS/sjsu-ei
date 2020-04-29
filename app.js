@@ -4,10 +4,10 @@
 var app = new Vue({
 	el: "#app",
 	data: {
-		CSU_GPA: "", // --Mapped To--> (v-model="CSU_GPA")
-		SAT_EBRW: "", // --Mapped To--> (v-model="SAT_EBRW")
-		SAT_MATH: "", // --Mapped To--> (v-model="SAT_MATH")
-		SERVICE_AREA: "", // --Mapped To--> (v-model="SERVICE_AREA")
+		CSU_GPA: 0, // --Mapped To--> (v-model="CSU_GPA")
+		SAT_EBRW: 0, // --Mapped To--> (v-model="SAT_EBRW")
+		SAT_MATH: 0, // --Mapped To--> (v-model="SAT_MATH")
+		SERVICE_AREA: 0, // --Mapped To--> (v-model="SERVICE_AREA")
 		STANDARD: 2950, // Minimum standard for CSU eligibility index
 		DECISION: null, // Either evaluates to Met, Exceeded, Transcended, or Haven't Met Requirements
 		EI: null, // --Mapped To--> {{ EI }}
@@ -66,7 +66,7 @@ function four_strokes(element) { //4 characters only for CSU weighted GPA
     }	
 }
 
-function three_strokes(element) { //3 characters only for SAT EBRW, SAT MATH, and SERVICE AREA
+function three_strokes(element) { //3 characters only for SAT EBRW and SAT MATH
     var max_chars = 3; //only allows 3 characters at the maximum
     if(element.value.length > max_chars) {
         element.value = element.value.substr(0, max_chars);
