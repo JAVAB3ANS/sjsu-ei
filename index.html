@@ -44,7 +44,7 @@
 						</div>
 						<div class="column is-8">
 							<div class="field">
-								<label class="label">SAT Critical Reading</label>
+								<label class="label">SAT Evidence-Based Reading and Writing</label>
 								<div class="control">
 									<input class="input" onkeypress="limitKeypress(event,this.value,3)" type="number" min="200" max="800" maxlength="800" step="10" placeholder="/800" v-model="SAT_EBRW">
 								</div>
@@ -55,6 +55,7 @@
 									<input class="input" onkeypress="limitKeypress(event,this.value,3)" type="number" min="200" max="800" maxlength="800" step="10" placeholder="/800" v-model="SAT_MATH">
 								</div>
 							</div>
+							<a href="#act" class="heading"><strong>What if I took the ACT?</strong></a>
 						</div>
 					</div>
 				</div>
@@ -67,7 +68,7 @@
 						</div>
 						<div class="column is-8">
 							<div class="field">
-								<label class="label"> How <a href="https://maps.google.com/">far in miles</a> is your current high school from San Jose State University? </label>
+								<label class="label"> How <a target="_blank" href="https://maps.google.com/">far in miles</a> is your current high school from San Jose State University? </label>
 								<div class="control">
 									<input class="input" onkeypress="limitKeypress(event,this.value,4)" type="number" min="0" max="3000" maxlength="3000" step="1" placeholder="/500" v-model="SERVICE_AREA">
 								</div>
@@ -133,10 +134,325 @@
 					the major-specific impaction threshold.</p> <br>
 					<p><strong>Are the standards for admission to specific majors the same each year?</strong></p>
 					<p> No, they change from year to year depending on amount of applications for each major. For reference, check 
-					out SJSU's <a href="https://www.sjsu.edu/admissions/impaction/">webpage</a> with data from prior years.</p><br>
+					out SJSU's <a target="_blank" href="https://www.sjsu.edu/admissions/impaction/">webpage</a> with data from prior years.</p><br>
 					<p><strong>What is a good EI score?/What is an EI score that will get me in?</strong></p>
 					<p>There's an eligibility index chart that SJSU puts on their <a target="_blank" href="https://www.sjsu.edu/admissions/impaction/impactionresultsfreshmen/index.html">website</a> for Fall 2020<br>
 					Or you could look up your specific undergraduate major (program of study) here: </p> <br>
+					<p id="act"><strong>What if I took the ACT?</strong></p>
+					<p> Use the table below to convert ACT scores to SAT scores: </p> <br>
+					<p>
+						<table class="table is-bordered is-striped is-narrow is-hoverable">
+							<thead>
+								<tr>
+									<th> ACT E + R </th>
+									<th> SAT EBRW </th>
+									<th> ACT MATH </th>
+									<th> SAT MATH </th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td> 72 </td>
+									<td> 790 </td>
+									<td> 36 </td>
+									<td> 800 </td>
+								</tr>
+								<tr>
+									<td> 71 </td>
+									<td> 780 </td>
+									<td> 35 </td>
+									<td> 780 </td>
+								</tr>
+								<tr>
+									<td> 70 </td>
+									<td> 750 </td>
+									<td> 34 </td>
+									<td> 760 </td>
+								</tr>
+								<tr>
+									<td> 69 </td>
+									<td> 740 </td>
+									<td> 33 </td>
+									<td> 740 </td>
+								</tr>
+								<tr>
+									<td> 68 </td>
+									<td> 730 </td>
+									<td> 32 </td>
+									<td> 720 </td>
+								</tr>
+								<tr> 
+									<td> 67 </td>
+									<td> 720 </td>
+									<td> 31 </td>
+									<td> 710 </td>
+								</tr>
+								<tr>
+									<td> 66 </td>
+									<td> 710 </td>
+									<td> 30 </td>
+									<td> 700 </td>
+								</tr>
+								<tr>
+									<td> 64 </td>
+									<td> 700 </td>
+									<td> 29 </td>
+									<td> 680 </td>
+								</tr>
+								<tr>
+									<td> 63 </td>
+									<td> 690 </td>
+									<td> 28 </td>
+									<td> 660 </td>
+								</tr>
+								<tr> 
+									<td> 61 </td>
+									<td> 680 </td>
+									<td> 27 </td>
+									<td> 640 </td>
+								</tr>
+								<tr>
+									<td> 60 </td>
+									<td> 670 </td>
+									<td> 26 </td>
+									<td> 610 </td>
+								</tr>
+								<tr>
+									<td> 58 </td>
+									<td> 660 </td>
+									<td> 25 </td>
+									<td> 590 </td>
+								</tr>
+								<tr>
+									<td> 57 </td>
+									<td> 650 </td>
+									<td> 24 </td>
+									<td> 580 </td>
+								</tr>
+								<tr>
+									<td> 55 </td>
+									<td> 640 </td>
+									<td> 23 </td>
+									<td> 560 </td>
+								</tr>
+								<tr>
+									<td> 54 </td>
+									<td> 630 </td>
+									<td> 22 </td>
+									<td> 540 </td>
+								</tr>
+								<tr>
+									<td> 52 </td>
+									<td> 620 </td>
+									<td> 21 </td>
+									<td> 530 </td>
+								</tr>
+								<tr>
+									<td> 51 </td>
+									<td> 610 </td>
+									<td> 20 </td>
+									<td> 520 </td>
+								</tr>
+								<tr>
+									<td> 49 </td>
+									<td> 600 </td>
+									<td> 19 </td>
+									<td> 510 </td>
+								</tr>
+								<tr>
+									<td> 48 </td>
+									<td> 590 </td>
+									<td> 18 </td>
+									<td> 500 </td>
+								</tr>
+								<tr>
+									<td> 46 </td>
+									<td> 580 </td>
+									<td> 17 </td>
+									<td>470</td>
+								</tr>
+								<tr>
+									<td> 45 </td>
+									<td> 570 </td>
+									<td> 16 </td>
+									<td> 430 </td>
+								</tr>
+								<tr>
+									<td> 44 </td>
+									<td> 560 </td>
+									<td> 15 </td>
+									<td> 400 </td>
+								</tr>
+								<tr>
+									<td> 43 </td>
+									<td> 550 </td>
+									<td> 14 </td>
+									<td> 360 </td>
+								</tr>
+								<tr>
+									<td> 42 </td>
+									<td> 540 </td>
+									<td> 13 </td>
+									<td> 330 </td>
+								</tr>
+								<tr>
+									<td> 40 </td>
+									<td> 530 </td>
+									<td> 12 </td>
+									<td> 310 </td>
+								</tr>
+								<tr>
+									<td> 39 </td>
+									<td> 520 </td>
+									<td> 11 </td>
+									<td> 280 </td>
+								</tr>
+								<tr>
+									<td> 38 </td>
+									<td> 510 </td>
+									<td> 10 </td>
+									<td> 260 </td>
+								</tr>
+								<tr>
+									<td> 37 </td>
+									<td> 500 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 35 </td>
+									<td> 490 </td>
+									<td> </td>
+									<td> </td>
+								</tr>	
+								<tr>
+									<td> 34 </td>
+									<td> 480 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 33 </td>
+									<td> 470 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 32 </td>
+									<td> 460 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 31 </td>
+									<td> 450 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr> 
+									<td> 30 </td>
+									<td> 440 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 29 </td>
+									<td> 430 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 28 </td>
+									<td> 420 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 27 </td>
+									<td> 410 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 26 </td>
+									<td> 400 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 25 </td>
+									<td> 390 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 24 </td>
+									<td> 380 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 23 </td>
+									<td> 370 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 22 </td>
+									<td> 360 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 21 </td>
+									<td> 350 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 20 </td>
+									<td> 340 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 19 </td>
+									<td> 330 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 18 </td>
+									<td> 320 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 17 </td>
+									<td> 310 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 16 </td>
+									<td> 300 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 15 </td>
+									<td> 290 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> 14 </td>
+									<td> 280 </td>
+									<td> </td>
+									<td> </td>
+								</tr>
+							</tbody>
+						</table>
 				</div>
 				<section class="hero is-primary welcome is-small">
 					<a id="table">
@@ -148,11 +464,11 @@
 					</a>
 				</section>
 				<div class="box">
-					<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+					<table class="table is-bordered is-striped is-hoverable">
 						<thead>
 							<tr>
-								<th>Program (Major)</td>
-								<th>Admit to Program Minimum SAT E.I.</td>
+								<th>Program (Major)</th>
+								<th>Minimum EI</th>
 							</tr>
 						</thead>
 						<tbody> <!--LONG LIST OF MAJORS!!-->
@@ -663,7 +979,7 @@
 						</tbody>
 						   <tr>
 						<tfoot>
-							  <td>*College of Engineering - Applicants were ranked on a <a href="https://www.sjsu.edu/admissions/impaction/impactionresultsfreshmen/freshmenimpactioncalc/index">
+							  <td>*College of Engineering - Applicants were ranked on a <a target="_blank" href="https://www.sjsu.edu/admissions/impaction/impactionresultsfreshmen/freshmenimpactioncalc/index">
 							  modified Eligibility Index</a> placing greater weight on the math sections of the SAT and ACT.</td>
 						   </tr>
 						   <tr>
