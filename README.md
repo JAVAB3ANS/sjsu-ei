@@ -1,13 +1,9 @@
-# AP Computer Science Principles Create Task
+# SJSU Eligibility Index Calculator
+- This is my DIY project that calculates your eligibility to undergraduate programs at San Jose State University! This is a showcase of my abilities to implement algorithms and abstractions with the help of HTML, CSS, and JS. Plug away to find where you stand!
 
-## Performance Task: Create – Applications from Ideas
-- This performance task focuses on students developing computer programs and describing significant aspects of the program that allow it to run correctly.
-- Students have the flexibility to write programs that reflects their interests (e.g., their desire to solve a problem; program a game; or produce digital art appealing to a specific audience, etc.) 
-- This allows students to engage in the study of computer science from a creative perspective. 
-- Students will provide evidence of their knowledge of important programming concepts such as developing algorithms and using abstractions. 
-- Students are required to submit an individual program but are able to collaborate on the development of their program. 
+- This is an eligibility index calculator you can use to determine your chances of getting into your chosen program of study here at SJSU. The general idea is that if you fall above the number on the list below the calculator, you will most likely be accepted - but being above the EI does not mean you will be accepted. It just means that you fall within the pool of students that will be considered. If you are looking to apply to an engineering major, you will be focusing on the COE EI number that results from the calculation.
 
-## Author
+## Author(s):
 - [Jason Anh Vu](https://javu404.github.io/) ~ *Webpage Author, Programmer, & Student at Cristo Rey San Jose Jesuit High School*
 - Aditya Rathod ~ Credited at bottom of my webpage
   > GitHub: [applecrazy](https://github.com/applecrazy);
