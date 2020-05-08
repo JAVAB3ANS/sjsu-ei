@@ -35,29 +35,29 @@ var app = new Vue({
 			}
 			this.COE_EI = COE_EI; // sets up output in {{ COE_EI }}		
 			
-			if (this.EI >= Math.min(2950, parseInt(this.EI_STANDARD)) && this.EI <= Math.max(3750, parseInt(this.EI_STANDARD))) { // EI ≥ 2950 and EI ≤ 3750 == met requirements
-				DECISION = "You've met minimum requirements for undergraduate admission.";
-				this.DECISION = DECISION;
-				console.log(DECISION);
-			} else if (this.EI >= Math.min(3750, parseInt(this.EI_STANDARD)) && (this.EI <= Math.max(4825, parseInt(this.EI_STANDARD)))) { // EI ≥ 3750 and EI ≤ 4825 == exceeded requirements
-				DECISION = "You've exceeded minimum requirements for undergraduate admission.";
-				this.DECISION = DECISION;
-				console.log(DECISION);
-			} else if (this.EI > Math.min(4825, parseInt(this.EI_STANDARD))) { // EI ≥ 4825 == transcended requirements
-				DECISION = "You've transcended minimum requirements for undergraduate admission.";
-				this.DECISION = DECISION;
-				console.log(DECISION);
-			} else { // EI < 2950 == haven't met requirements
-				DECISION = "You've not met minimum requirements for undergraduate admission";
-				this.DECISION = DECISION;
-				console.log(DECISION);			
-			}
+			GET_DECISION(); //calls if-else function and condenses it into larger "calculate: function()"
 			
 			console.log("Your SJSU EI is: " + EI); //console log at finish
 			console.log("Your SJSU COE EI is: " + COE_EI); //console log at finish
 		}
 	},
 });
+
+function GET_DECISION() { //Outputs using EI variable to determine projected decision
+	if (this.EI >= Math.min(2950, parseInt(this.EI_STANDARD)) && this.EI <= Math.max(3750, parseInt(this.EI_STANDARD))) { // EI ≥ 2950 and EI ≤ 3750 == met requirements
+		DECISION = "You've met minimum requirements for undergraduate admission.";
+		this.DECISION = DECISION;
+	} else if (this.EI >= Math.min(3750, parseInt(this.EI_STANDARD)) && (this.EI <= Math.max(4825, parseInt(this.EI_STANDARD)))) { // EI ≥ 3750 and EI ≤ 4825 == exceeded requirements
+		DECISION = "You've exceeded minimum requirements for undergraduate admission.";
+		this.DECISION = DECISION;
+	} else if (this.EI > Math.min(4825, parseInt(this.EI_STANDARD))) { // EI ≥ 4825 == transcended requirements
+		DECISION = "You've transcended minimum requirements for undergraduate admission.";
+		this.DECISION = DECISION;
+	} else { // EI < 2950 == haven't met requirements
+		DECISION = "You've not met minimum requirements for undergraduate admission";
+		this.DECISION = DECISION;	
+	}
+};
 
 function limitKeypress(event, value, maxLength) {
     if (value != undefined && value.toString().length >= maxLength) {
