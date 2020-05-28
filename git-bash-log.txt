@@ -1,6 +1,48 @@
-jvu40@Jason-AL061NR MINGW64 ~/Documents/AP-CSP-CreateTask (master)
+jvu40@Jason-AL061NR MINGW64 /c/users/jvu40/documents/github_repos/sjsu-ei (master)
 $ git log
-commit 82c9605 (HEAD -> master, origin/master, origin/HEAD)
+commit 6f9cc5d (HEAD -> master, origin/master, origin/HEAD)
+Author: Jason Vu <javu404@gmail.com>
+Date:   Wed May 27 11:26:37 2020 -0700
+
+    UPDATED
+
+commit 0ef2e98
+Author: Jason Vu <javu404@gmail.com>
+Date:   Mon May 25 20:30:40 2020 -0700
+
+    NEW CHANGES
+
+commit c317656
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Wed May 20 22:49:34 2020 -0700
+
+    Update README.md
+
+commit b20c6f8
+Author: Jason Vu <javu404@gmail.com>
+Date:   Fri May 8 09:25:04 2020 -0700
+
+    5/8/20
+
+commit a8662c6
+Author: Jason Anh Vu <javu404@gmail.com>
+Date:   Sat May 2 10:33:19 2020 -0700
+
+    Updated 5/2/20
+
+commit 76a69ec
+Author: Jason Vu <javu404@gmail.com>
+Date:   Thu Apr 30 10:25:36 2020 -0700
+
+    4/30/20
+
+commit 7ada084
+Author: Jason Vu <javu404@gmail.com>
+Date:   Thu Apr 30 10:23:54 2020 -0700
+
+    4/30/20
+
+commit 82c9605
 Author: Jason Vu <javu404@gmail.com>
 Date:   Thu Apr 30 10:23:05 2020 -0700
 
