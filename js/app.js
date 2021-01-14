@@ -17,7 +17,7 @@ var app = new Vue({
 		calculate: function() {
 			var AREA_BOOST = 200; //created AREA_BOOST variable that gives 200 points if user is local
 
-			EI = 0; //changes from "null" to 0 when "calculate" button is pressed
+			const EI = 0; //changes from "null" to 0 when "calculate" button is pressed
 			EI += Math.min(4.2, parseFloat(this.CSU_GPA)) * 800; //value must be less than or equal to 4.2
 			EI += (Math.min(800, parseInt(this.SAT_EBRW)) + Math.min(800, parseInt(this.SAT_MATH))); //values must be less than or equal to 800
 			if (Math.max(0, parseFloat(this.SERVICE_AREA)) > 0 && Math.max(0, parseFloat(this.SERVICE_AREA) <= 20)) {
@@ -27,7 +27,7 @@ var app = new Vue({
 			}
 			this.EI = EI; // sets up output in {{ EI }}
 			
-			COE_EI = 0; //changes from "null" to 0 when "calculate" button is pressed
+			const COE_EI = 0; //changes from "null" to 0 when "calculate" button is pressed
 			COE_EI += Math.min(4.2, parseFloat(this.CSU_GPA)) * 800; //value must be less than or equal to 4.2
 			COE_EI += (Math.min(800, parseInt(this.SAT_EBRW)) + Math.min(800, parseInt(this.SAT_MATH))*3)/2; //values must be less than or equal to 800
 			if (Math.max(0, parseFloat(this.SERVICE_AREA)) > 0 && Math.max(0, parseFloat(this.SERVICE_AREA) <= 20)) {
@@ -37,8 +37,7 @@ var app = new Vue({
 			}
 			this.COE_EI = COE_EI; // sets up output in {{ COE_EI }}		
 			
-			console.log("Your SJSU EI is: " + EI); //console log at finish
-			console.log("Your SJSU COE EI is: " + COE_EI); //console log at finish
+			const DECISION = "";
 
 			if (this.EI >= Math.min(2950, parseInt(this.EI_STANDARD)) && this.EI <= Math.max(3750, parseInt(this.EI_STANDARD))) { // EI ≥ 2950 and EI ≤ 3750 == met requirements
 				DECISION = "You've met minimum requirements for undergraduate admission.";
@@ -59,7 +58,7 @@ var app = new Vue({
 
 
 function limitKeypress(event, value, maxLength) {
-    if (value != undefined && value.toString().length >= maxLength) {
+    if (value !== undefined && value.toString().length >== maxLength) {
         event.preventDefault();
     }
 };
