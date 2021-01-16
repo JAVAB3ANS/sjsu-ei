@@ -17,7 +17,7 @@ var app = new Vue({
 		calculate: function() {
 			var AREA_BOOST = 200; //created AREA_BOOST variable that gives 200 points if user is local
 
-			const EI = 0; //changes from "null" to 0 when "calculate" button is pressed
+			EI = 0; //changes from "null" to 0 when "calculate" button is pressed
 			EI += Math.min(4.2, parseFloat(this.CSU_GPA)) * 800; //value must be less than or equal to 4.2
 			EI += (Math.min(800, parseInt(this.SAT_EBRW)) + Math.min(800, parseInt(this.SAT_MATH))); //values must be less than or equal to 800
 			if (Math.max(0, parseFloat(this.SERVICE_AREA)) > 0 && Math.max(0, parseFloat(this.SERVICE_AREA) <= 20)) {
@@ -27,7 +27,7 @@ var app = new Vue({
 			}
 			this.EI = EI; // sets up output in {{ EI }}
 			
-			const COE_EI = 0; //changes from "null" to 0 when "calculate" button is pressed
+			COE_EI = 0; //changes from "null" to 0 when "calculate" button is pressed
 			COE_EI += Math.min(4.2, parseFloat(this.CSU_GPA)) * 800; //value must be less than or equal to 4.2
 			COE_EI += (Math.min(800, parseInt(this.SAT_EBRW)) + Math.min(800, parseInt(this.SAT_MATH))*3)/2; //values must be less than or equal to 800
 			if (Math.max(0, parseFloat(this.SERVICE_AREA)) > 0 && Math.max(0, parseFloat(this.SERVICE_AREA) <= 20)) {
