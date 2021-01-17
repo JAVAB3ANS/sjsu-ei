@@ -37,7 +37,8 @@ var app = new Vue({
 			}
 			this.COE_EI = COE_EI; // sets up output in {{ COE_EI }}		
 			
-		        DECISION = "";
+			console.log("Your SJSU EI is: " + EI); //console log at finish
+			console.log("Your SJSU COE EI is: " + COE_EI); //console log at finish
 
 			if (this.EI >= Math.min(2950, parseInt(this.EI_STANDARD)) && this.EI <= Math.max(3750, parseInt(this.EI_STANDARD))) { // EI ≥ 2950 and EI ≤ 3750 == met requirements
 				DECISION = "You've met minimum requirements for undergraduate admission.";
@@ -58,7 +59,7 @@ var app = new Vue({
 
 
 function limitKeypress(event, value, maxLength) {
-    if (value !== undefined && value.toString().length >== maxLength) {
+    if (value != undefined && value.toString().length >= maxLength) {
         event.preventDefault();
     }
 };
@@ -75,7 +76,6 @@ document.onkeydown = function (e) {
 2) Multiply CSU GPA to 800
 3) Add CSU GPA to SAT 
 4) Voila! Your SJSU normal eligibility index score!
-
 |SJSU CSU COE EI Algorithm:|
 1) Multiply SAT MATH by 3 
 2) Add SAT MATH with SAT-ENGLISH
