@@ -37,7 +37,7 @@ var app = new Vue({
 			}
 			this.COE_EI = COE_EI; // sets up output in {{ COE_EI }}		
 			
-			const DECISION = "";
+		        DECISION = "";
 
 			if (this.EI >= Math.min(2950, parseInt(this.EI_STANDARD)) && this.EI <= Math.max(3750, parseInt(this.EI_STANDARD))) { // EI ≥ 2950 and EI ≤ 3750 == met requirements
 				DECISION = "You've met minimum requirements for undergraduate admission.";
