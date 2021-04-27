@@ -26,10 +26,10 @@
 - For my 3rd abstraction (3rd-rectangle), the `this.EI` and `this.COE_EI` points to their respective variables in the "app" instance. This enables me to mount the separate variable instances to the `data` object, making it easier to set up data observation throughout a series of initialization steps. It sets up the output in the `{{ EI }}` and `{{COE_EI}}` which renders as HTML text on the user interface.
 
 ## Video
-- [My Video Here!](https://jasonanhvu.github.io/sjsu-ei/sjsu-ei.mp4)
+- [My Video Here!](https://JAVA9620.github.io/sjsu-ei/sjsu-ei.mp4)
 
 ### Author(s):
-- [Jason Anh Vu](https://javu404.github.io/) ~ *Webpage Author, Programmer, & Student 
+- [Jason Anh Vu](https://JAVA9620.github.io/) ~ *Webpage Author, Programmer, & Student 
   > Reddit: [u/WizardApple](https://reddit.com/user/WizardApple) 
 
 ### License
