@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="has-text-centered"> <button class="button is-medium is-success" v-on:click="calculate">Calculate</button></div> <br>
+                <div class="has-text-centered"> <button class="button is-medium is-success" v-on:click="calculate">Calculate</button></div> <br> 
                 <div class="box has-text-centered" v-if="EI !== null">
                     <h3 class="title is-3">Your SJSU EI is: <i><u> {{ EI }} </u></i></h3>
                     <h3 class="title is-3">Your SJSU College of Engineering EI is: <i><u> {{ COE_EI }} </u></i></h3> <span> <a href="#table">Check out the major-specific impaction threshold table below!</a> </span></div>
@@ -97,8 +97,8 @@
                             <p> No, they change from year to year depending on amount of applications for each major. For reference, check out SJSU's <a target="_blank" rel="noreferrer" href="https://www.sjsu.edu/admissions/impaction/">webpage</a> with data
                                 from prior years.</p><br>
                             <p><strong>What is a good EI score?/What is an EI score that will get me in?</strong></p>
-                            <p>There's an eligibility index chart that SJSU puts on their <a target="_blank" rel="noreferrer" href="https://www.sjsu.edu/admissions/impaction/impactionresultsfreshmen/index.html">website</a> for Fall 2020<br> Or you could
-                                look up your specific undergraduate major (program of study) here:</p> <br> <span id="act" tabindex="-1"><strong>What if I took the ACT?</strong></span>
+                            <p>There's an eligibility index chart that SJSU puts on their <a target="_blank" rel="noreferrer" href="https://www.sjsu.edu/admissions/impaction/freshmen-impaction-results/index.php">website</a> for Fall 2022, <br>or you could
+                                look up your specific undergraduate major (program of study) <a href="#table">here</a></p> <br> <span id="act" tabindex="-1"><strong>What if I took the ACT?</strong></span>
                             <p> Use the table below to convert ACT scores to SAT scores:</p> <br>
                             <p>
                                 <table class="table is-bordered is-striped is-narrow is-hoverable">
@@ -939,19 +939,19 @@
                             <td>^This major did not have additional capacity to admit applicants as alternate majors.</td>
                         </tr>
                         </tfoot>
-                    </table>
-                </div>
+                    </table> 
+                    <div id="table"></div>
+                </div> 
             </div>
         </section>
         <footer class="footer">
             <div class="content has-text-centered">
                 <p> Adapted with permission from <a target="_blank" rel="noreferrer" href="https://github.com/applecrazy">Aditya Rathod</a> who made the <a target="_blank" rel="noreferrer" href="http://mca.netlify.com">Cal Poly MCA calculator</a> for <a rel="noreferrer"
-                        target="_blank" href="https://www.reddit.com/r/ApplyingToCollege/">r/ApplyingToCollege</a>. <br> &copy All rights reserved | April 6, 2020</p>
+                        target="_blank" href="https://www.reddit.com/r/ApplyingToCollege/">r/ApplyingToCollege</a>. <br> &copy All rights reserved | 2022</p>
             </div>
         </footer>
-        <script type="text/javascript" src="./js/vue.js"></script>
-        <script type="text/javascript" src="./js/app.js"></script>
+        <script src="./js/dist/vue.js"></script>
+        <script src="./js/app.js"></script>  
     </div>
-</body>
-
+</body> 
 </html>
