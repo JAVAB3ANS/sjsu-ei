@@ -22,19 +22,8 @@ var app = new Vue({
                     : this.EI > Math.min(4825, parseInt(this.EI_STANDARD))
                     ? ((DECISION = "You've transcended minimum requirements for undergraduate admission."), (this.DECISION = DECISION))
                     : ((DECISION = "You've not met minimum requirements for undergraduate admission"), (this.DECISION = DECISION));
-        }, /*
-        scrape: function () {
-            1. Scrape program name and program eligibility index dynamically from SJSU's admissions webpage
-            2. Get " table (> thead > tbody > tfooter) "
-            3. Map it to the <div id="table">
-
-            document.getElementById("table").textContent = JSON.stringify([...document.querySelectorAll("table > thead")].map(r => r.textContent))
-        }, 
-    },
-    created: function() {
-        this.scrape()
-    } */
-    }
+        },  
+    }, 
 });
 function limitKeypress(t, e, E) {
     null != e && e.toString().length >= E && t.preventDefault();

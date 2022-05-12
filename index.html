@@ -950,6 +950,35 @@
                         target="_blank" href="https://www.reddit.com/r/ApplyingToCollege/">r/ApplyingToCollege</a>. <br> &copy All rights reserved | 2022</p>
             </div>
         </footer>
+        
+        <script>
+            const testURL = "https://www.sjsu.edu/admissions/impaction/freshmen-impaction-results/index.php";
+
+            const myInit = {
+                method: "HEAD",
+                mode: "no-cors",
+            };
+
+            const myRequest = new Request(testURL, myInit);
+
+            fetch(myRequest).then(function (res) {
+                // The API call was successful!
+                return res.text()
+            }).then(function (html) {
+                // Convert the HTML string into a document object
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(html, "text/html");
+
+                // Get the table
+                var table = doc.querySelectorAll("table > thead");
+                document.getElementById("table").textContent = table;
+
+                console.log(table);
+            }).catch(function (err) {
+                // There was an error
+                console.warn("Something went wrong.", err);
+            });
+        </script>
         <script src="./js/dist/vue.js"></script>
         <script src="./js/app.js"></script>  
     </div>
