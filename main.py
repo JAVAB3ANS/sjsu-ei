@@ -9,11 +9,14 @@ app = Flask(__name__, static_url_path="/static")
 
 @app.route("/")
 def index():  
+    # set options for selenium webdriver, instantiate, and deploy to scrape from school's admission site
     options = webdriver.ChromeOptions()
     options.add_argument("headless")
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
     driver = webdriver.Chrome(options=options)
     driver.get("https://www.sjsu.edu/admissions/impaction/freshmen-impaction-results/index.php")  
+    
+    # sleep to avoid overdoing server limits and extracting xpath value to get innerhtml attributes
     time.sleep(2) 
     program_data = driver.find_element(By.XPATH, "//*[@id=\"sjsu-maincontent\"]/table").get_attribute("innerHTML")
     
