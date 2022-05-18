@@ -1,7 +1,7 @@
 var app = new Vue({
     el: "#app",
     delimiters : ["[[", "]]"],
-    data: { CSU_GPA: 0, SAT_EBRW: 0, SAT_MATH: 0, SERVICE_AREA: 0, EI_STANDARD: 2950, DECISION: null, EI: null, COE_EI: null },
+    data: { CSU_GPA: 0, SAT_EBRW: 0, SAT_MATH: 0, SERVICE_AREA: cool_mileage, EI_STANDARD: 2950, DECISION: null, EI: null, COE_EI: null },
     methods: {
         calculate: function () {
             (EI = 0),

@@ -64,14 +64,14 @@
                      <div class="column is-8">
                         <div class="field">
                            <label class="label"> How <a rel="noreferrer" target="_blank" href="https://maps.google.com/">far in miles</a> is your current high school from San Jose State University? </label>
-                           <div class="control"> <input class="input" onkeypress="limitKeypress(event,this.value,4)" type="number" min="0" max="500" maxlength="500" step="1" placeholder="/500" v-model="SERVICE_AREA"></div>
+                           <div class="control"> <input readonly class="input" type="number" value="{{ mileage|safe }}" v-model="SERVICE_AREA"></div>
                         </div>
                      </div>
                   </div>
                </div>
                <div class="has-text-centered"> <button class="button is-medium is-success" v-on:click="calculate">Calculate</button></div>
                <br> 
-               <div class="box has-text-centered" v-if="EI !== null">
+               <div class="box has-text-centered" v-if="EI !== null"> 
                   <h3 class="title is-3">Your SJSU EI is: <i><u> [[ EI ]] </u></i></h3>
                   <h3 class="title is-3">Your SJSU College of Engineering EI is: <i><u> [[ COE_EI ]] </u></i></h3>
                   <span> <a href="#table">Check out the major-specific impaction threshold table below!</a> </span>
@@ -91,11 +91,6 @@
                   </span>
                </section>
                <div class="box">
-                  <p><strong>Who are you?</strong></p>
-                  <p> I'm a high school senior just like you who was recently admitted to San Jose State University as a Computer Engineering major for the Class of 2024. My SJSU College of Engineering eligibility index score was a measly 4628, so there's
-                     no way I would've gotten into CS this year.
-                  </p>
-                  <br>
                   <p><strong>What does EI stand for?</strong></p>
                   <p>EI = <u>E</u>ligibility <u>I</u>ndex</p>
                   <br>
@@ -462,7 +457,7 @@
                </section>
                <div class="box">
                   <table class="table is-bordered is-striped is-hoverable">
-                     {{ columns|safe }}
+                     {{ program_columns|safe }}
                      <tfoot>
                         <td>*College of Engineering - Applicants were ranked on a <a target="_blank" rel="noreferrer" href="https://www.sjsu.edu/admissions/impaction/index.php"> modified Eligibility Index</a>                                    placing greater weight on the math sections of the SAT and ACT.</td>
                         </tr>
@@ -480,7 +475,10 @@
                   target="_blank" href="https://www.reddit.com/r/ApplyingToCollege/">r/ApplyingToCollege</a>. <br> &copy All rights reserved | 2022</p>
             </div>
          </footer>
-      </div> 
+      </div>   
+      <script type="text/javascript">
+         var cool_mileage = "{{ mileage|safe }}"
+      </script>
       <script type="text/javascript" src="./static/js/vue.js"></script>   
       <script type="text/javascript" src="./static/js/app.js"></script>
    </body>
