@@ -24,7 +24,7 @@ def index():
     location = requests.get("http://ip-api.com/json/").json()  
     user_cords = (location["lat"], location["lon"])
     school_cords = (37.3352, -121.8811) 
-    final_distance = round(geopy.distance.distance(user_cords, school_cords).miles)
+    final_distance = round(geopy.distance.distance(user_cords, school_cords).miles) 
  
     return render_template("./index.html", program_columns=program_data, mileage=final_distance)   
   
