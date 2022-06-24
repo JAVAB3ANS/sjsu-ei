@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A nifty and web-responsive calculator for determining your chances of admission into SJSU!">
+    <meta name="keywords" content="San Jose State University, undergraduate admissions, freshman impaction">
+    <meta name="author" content="Jason Vu">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SJSU Eligibility Index Calculator">
+    <meta property="og:url" content="https://JAVAB3ANS.github.io/sjsu-ei">
+    <meta property="og:image" content="https://JAVAB3ANS.github.io/sjsu-ei/sjsu-logo.png">
+    <meta property="og:description" content="A nifty and web-responsive calculator for determining your chances of admission into SJSU!">
+    <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="icon" href="sjsu-logo.png">
+    <title>SJSU Eligibility Index Calculator</title>
+</head>
+
+<body style="background-color: lightgray">
+    <div id="app">
+        <section class="section">
+            <div class="container">
+                <h1 class="title has-text-centered"> SJSU Eligibility Index Calculator</h1>
+                <div class="box" style="padding: 0; padding-right: 20px;">
+                    <div class="columns">
+                        <div class="column is-4 has-background-primary" style="border-top-left-radius: 6px; border-bottom-left-radius: 6px">
+                            <h4 class="title is-5 has-text-white">Grades</h4>
+                            <h5 class="subtitle is-6 has-text-white">Maximum GPA for admissions is 4.2.</h5>
+                        </div>
+                        <div class="column is-8">
+                            <div class="field"> <label class="label">WEIGHTED CSU GPA</label>
+                                <div class="control"> <input class="input" onkeypress="limitKeypress(event,this.value,4)" type="number" min="0" max="4.2" maxlength="4.2" step="0.01" placeholder="/4.2" v-model="CSU_GPA"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box" style="padding: 0; padding-right: 20px;">
+                    <div class="columns">
+                        <div class="column is-4 has-background-info" style="border-top-left-radius: 6px; border-bottom-left-radius: 6px">
+                            <h4 class="title is-5 has-text-white">Test Scores</h4>
+                            <h5 class="subtitle is-6 has-text-white">The theoretical maximum is 1600.</h5>
+                        </div>
+                        <div class="column is-8">
+                            <div class="field"> <label class="label">SAT EBRW</label>
+                                <div class="control"> <input class="input" onkeypress="limitKeypress(event,this.value,3)" type="number" min="200" max="800" maxlength="800" step="10" placeholder="/800" v-model="SAT_EBRW"></div>
+                            </div>
+                            <div class="field"> <label class="label">SAT Math</label>
+                                <div class="control"> <input class="input" onkeypress="limitKeypress(event,this.value,3)" type="number" min="200" max="800" maxlength="800" step="10" placeholder="/800" v-model="SAT_MATH"></div>
+                            </div> <a href="#act" class="heading"><strong>What if I took the ACT?</strong></a></div>
+                    </div>
+                </div>
+                <div class="box" style="padding: 0; padding-right: 20px;">
+                    <div class="columns">
+                        <div class="column is-4 has-background-dark" style="border-top-left-radius: 6px; border-bottom-left-radius: 6px">
+                            <h4 class="title is-5 has-text-white">Other Information</h4>
+                        </div>
+                        <div class="column is-8">
+                            <div class="field"> <label class="label"> How <a rel="noreferrer" target="_blank" href="https://maps.google.com/">far in miles</a> is your current high school from San Jose State University? </label>
+                                <div class="control"> <input class="input" onkeypress="limitKeypress(event,this.value,4)" type="number" min="0" max="500" maxlength="500" step="1" placeholder="/500" v-model="SERVICE_AREA"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="has-text-centered"> <button class="button is-medium is-success" v-on:click="calculate">Calculate</button></div> <br>
+                <div class="box has-text-centered" v-if="EI !== null">
+                    <h3 class="title is-3">Your SJSU EI is: <i><u> {{ EI }} </u></i></h3>
+                    <h3 class="title is-3">Your SJSU College of Engineering EI is: <i><u> {{ COE_EI }} </u></i></h3> <span> <a href="#table">Check out the major-specific impaction threshold table below!</a> </span></div>
+                <div class="box has-text-centered" v-if="DECISION !== null">
+                    <h3 class="title is-4">Your SJSU projected decision is:</h3>
+                    <h2 class="title is-3"><i>{{ DECISION }}</i></h2> <span> <a href="#faqs">Frequently-Asked Questions</a> </span></div>
+                <section class="hero is-primary welcome is-small"> <span id="faqs" tabindex="-1"><div class="box hero-body has-background-info"><div><h1 class="title"> FAQs</h1></div></div> </span> </section>
+                <div class="box">
+                    <p><strong>Who are you?</strong></p>
+                    <p> I'm a high school senior just like you who was recently admitted to San Jose State University as a Computer Engineering major for the Class of 2024. My SJSU College of Engineering eligibility index score was a measly 4628, so there's
+                        no way I would've gotten into CS this year.</p> <br>
+                    <p><strong>What does EI stand for?</strong></p>
+                    <p>EI = <u>E</u>ligibility <u>I</u>ndex</p> <br>
+                    <p><strong>What does "impacted" mean?</strong></p>
+                    <p>Impacted means that meeting the minimum California State University (CSU) requirements does not guarantee admission to SJSU. Admission to San José State is competitive in all majors because SJSU continues to have more qualified applicants
+                        than available new student spaces. We will no longer have the enrollment capacity to accept all CSU eligible applicants, including some from local high schools and community colleges.</p> <br>
+                    <p><strong>Why does SJSU's eligibility index matter?</strong></p>
+                    <p>SJSU ranked applicants for every major based on the California State University Eligibility Index (EI) and offered admission to sufficient numbers of students to meet both individual major's capacity and overall university enrollment
+                        capacity.</p> <br>
+                    <p><strong>What are the most competitive majors at San Jose State University?</strong>
+                        <p>
+                            <p> The College of Engineering is heavily impacted for all majors. Applicants to majors in the College of Engineering (COE) were ranked based on a modified version of the California State University Eligibility Index (COE EI).
+                                The California State University EI was modified so that the quantitative (math) section of the SAT was given greater weight than the Evidence Based Reading and Writing (EBRW) section.</p> <br>
+                            <p><strong>Is there consideration for admission to alternate majors listed on the application?</strong></p>
+                            <p>SJSU admits applicants to their alternate major only if there is additional capacity beyond those admitted as a primary major. This means that you might meet the threshold for your alternate major, but because there is no additional
+                                enrollment capacity to admit applicants to alternate majors, your application was withdrawn as unaccommodated.</p> <br>
+                            <p><strong>How would non-residents of California have to perform relatively to in-state applicants?</strong></p>
+                            <p>Non-residents of California, including international students, needed to earn an eligibility index of 3570 using the SAT exam or an eligibility index of 842 using the ACT exam to be eligible for CSU admission consideration.
+                                For majors requiring a higher eligibility index, non-residents must have met the higher standard: the CSU eligibility standard for non-resident applicants or the major-specific impaction threshold.</p> <br>
+                            <p><strong>Are the standards for admission to specific majors the same each year?</strong></p>
+                            <p> No, they change from year to year depending on amount of applications for each major. For reference, check out SJSU's <a target="_blank" rel="noreferrer" href="https://www.sjsu.edu/admissions/impaction/">webpage</a> with data
+                                from prior years.</p><br>
+                            <p><strong>What is a good EI score?/What is an EI score that will get me in?</strong></p>
+                            <p>There's an eligibility index chart that SJSU puts on their <a target="_blank" rel="noreferrer" href="https://www.sjsu.edu/admissions/impaction/impactionresultsfreshmen/index.html">website</a> for Fall 2020<br> Or you could
+                                look up your specific undergraduate major (program of study) here:</p> <br> <span id="act" tabindex="-1"><strong>What if I took the ACT?</strong></span>
+                            <p> Use the table below to convert ACT scores to SAT scores:</p> <br>
+                            <p>
+                                <table class="table is-bordered is-striped is-narrow is-hoverable">
+                                    <thead>
+                                        <tr>
+                                            <th> ACT E + R</th>
+                                            <th> SAT EBRW</th>
+                                            <th> ACT MATH</th>
+                                            <th> SAT MATH</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> 72</td>
+                                            <td> 790</td>
+                                            <td> 36</td>
+                                            <td> 800</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 71</td>
+                                            <td> 780</td>
+                                            <td> 35</td>
+                                            <td> 780</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 70</td>
+                                            <td> 750</td>
+                                            <td> 34</td>
+                                            <td> 760</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 69</td>
+                                            <td> 740</td>
+                                            <td> 33</td>
+                                            <td> 740</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 68</td>
+                                            <td> 730</td>
+                                            <td> 32</td>
+                                            <td> 720</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 67</td>
+                                            <td> 720</td>
+                                            <td> 31</td>
+                                            <td> 710</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 66</td>
+                                            <td> 710</td>
+                                            <td> 30</td>
+                                            <td> 700</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 64</td>
+                                            <td> 700</td>
+                                            <td> 29</td>
+                                            <td> 680</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 63</td>
+                                            <td> 690</td>
+                                            <td> 28</td>
+                                            <td> 660</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 61</td>
+                                            <td> 680</td>
+                                            <td> 27</td>
+                                            <td> 640</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 60</td>
+                                            <td> 670</td>
+                                            <td> 26</td>
+                                            <td> 610</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 58</td>
+                                            <td> 660</td>
+                                            <td> 25</td>
+                                            <td> 590</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 57</td>
+                                            <td> 650</td>
+                                            <td> 24</td>
+                                            <td> 580</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 55</td>
+                                            <td> 640</td>
+                                            <td> 23</td>
+                                            <td> 560</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 54</td>
+                                            <td> 630</td>
+                                            <td> 22</td>
+                                            <td> 540</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 52</td>
+                                            <td> 620</td>
+                                            <td> 21</td>
+                                            <td> 530</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 51</td>
+                                            <td> 610</td>
+                                            <td> 20</td>
+                                            <td> 520</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 49</td>
+                                            <td> 600</td>
+                                            <td> 19</td>
+                                            <td> 510</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 48</td>
+                                            <td> 590</td>
+                                            <td> 18</td>
+                                            <td> 500</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 46</td>
+                                            <td> 580</td>
+                                            <td> 17</td>
+                                            <td>470</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 45</td>
+                                            <td> 570</td>
+                                            <td> 16</td>
+                                            <td> 430</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 44</td>
+                                            <td> 560</td>
+                                            <td> 15</td>
+                                            <td> 400</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 43</td>
+                                            <td> 550</td>
+                                            <td> 14</td>
+                                            <td> 360</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 42</td>
+                                            <td> 540</td>
+                                            <td> 13</td>
+                                            <td> 330</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 40</td>
+                                            <td> 530</td>
+                                            <td> 12</td>
+                                            <td> 310</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 39</td>
+                                            <td> 520</td>
+                                            <td> 11</td>
+                                            <td> 280</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 38</td>
+                                            <td> 510</td>
+                                            <td> 10</td>
+                                            <td> 260</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 37</td>
+                                            <td> 500</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 35</td>
+                                            <td> 490</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 34</td>
+                                            <td> 480</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 33</td>
+                                            <td> 470</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 32</td>
+                                            <td> 460</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 31</td>
+                                            <td> 450</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 30</td>
+                                            <td> 440</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 29</td>
+                                            <td> 430</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 28</td>
+                                            <td> 420</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 27</td>
+                                            <td> 410</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 26</td>
+                                            <td> 400</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 25</td>
+                                            <td> 390</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 24</td>
+                                            <td> 380</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 23</td>
+                                            <td> 370</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 22</td>
+                                            <td> 360</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 21</td>
+                                            <td> 350</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 20</td>
+                                            <td> 340</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 19</td>
+                                            <td> 330</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 18</td>
+                                            <td> 320</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 17</td>
+                                            <td> 310</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 16</td>
+                                            <td> 300</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 15</td>
+                                            <td> 290</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td> 14</td>
+                                            <td> 280</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                </div>
+                <section class="hero is-primary welcome is-small"> <span id="table" tabindex="-1"><div class="box hero-body has-background-dark"><div><h1 class="title"> Major-Specific Impaction Threshold</h1></div></div> </span> </section>
+                <div class="box">
+                    <table class="table is-bordered is-striped is-hoverable">
+                        <thead>
+                            <tr>
+                                <th>Program (Major)</th>
+                                <th>Minimum EI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Advertising^</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Aerospace Engineering*^</td>
+                                <td>3850</td>
+                            </tr>
+                            <tr>
+                                <td>African-American Studies</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Animation and Illustration^</td>
+                                <td>4300</td>
+                            </tr>
+                            <tr>
+                                <td>Anthropology</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Applied Math - Applied and Computational^</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Applied Math - Statistics^</td>
+                                <td>3250</td>
+                            </tr>
+                            <tr>
+                                <td>Art - Art History and Visual Culture</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Art - Digital Media Art^</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Art - Photography</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Art - Pictorial Arts</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Art - Spatial Arts</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Art - Studio - Prep for Teaching, SS</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Art - Studio Practice</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Aviation^</td>
+                                <td>3850</td>
+                            </tr>
+                            <tr>
+                                <td>Behavioral Science</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Biological Sciences^</td>
+                                <td>3800</td>
+                            </tr>
+                            <tr>
+                                <td>Biological Sciences - Microbiology^</td>
+                                <td>3800</td>
+                            </tr>
+                            <tr>
+                                <td>Biological Sciences - Molecular Biology^</td>
+                                <td>3800</td>
+                            </tr>
+                            <tr>
+                                <td>Biological Sciences - Systems Physiology^</td>
+                                <td>3800</td>
+                            </tr>
+                            <tr>
+                                <td>Biomedical Engineering*^</td>
+                                <td>3550</td>
+                            </tr>
+                            <tr>
+                                <td>Business Admin. - Accounting^</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Business Admin. - Accounting Info Systems^</td>
+                                <td> 3150</td>
+                            </tr>
+                            <tr>
+                                <td>Business Admin. - Business Analytics^</td>
+                                <td>3500</td>
+                            </tr>
+                            <tr>
+                                <td>Business Admin. - Corporate Accounting Finance^</td>
+                                <td>3600</td>
+                            </tr>
+                            <tr>
+                                <td>Business Admin. - Entrepreneurship^</td>
+                                <td>3100</td>
+                            </tr>
+                            <tr>
+                                <td>Business Admin. - Finance^</td>
+                                <td>3550</td>
+                            </tr>
+                            <tr>
+                                <td>Business Admin. - Global Operations Mgmt^</td>
+                                <td>3650</td>
+                            </tr>
+                            <tr>
+                                <td>Business Admin. - Human Resource Mgmt^</td>
+                                <td>3050</td>
+                            </tr>
+                            <tr>
+                                <td>Business Admin. - International Business^</td>
+                                <td>3200</td>
+                            </tr>
+                            <tr>
+                                <td>Business Admin. - Management^</td>
+                                <td>3850</td>
+                            </tr>
+                            <tr>
+                                <td>Business Admin. - Management Info Systems^</td>
+                                <td>3900</td>
+                            </tr>
+                            <tr>
+                                <td>Business Admin. - Marketing^</td>
+                                <td>3500</td>
+                            </tr>
+                            <tr>
+                                <td>Chemical Engineering*^</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Chemistry - Biochemistry^</td>
+                                <td>3500</td>
+                            </tr>
+                            <tr>
+                                <td>Chemistry, B.A.^</td>
+                                <td>3500</td>
+                            </tr>
+                            <tr>
+                                <td>Chemistry, B.S.^</td>
+                                <td>3500</td>
+                            </tr>
+                            <tr>
+                                <td>Chicana and Chicano Studies</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Child and Adolescent Dev. - Prep for Teaching, MS</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Child and Adolescent Development</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Chinese</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Civil Engineering*^</td>
+                                <td>3950</td>
+                            </tr>
+                            <tr>
+                                <td>Communication Studies^</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Communicative Disorders and Sciences</td>
+                                <td>3050</td>
+                            </tr>
+                            <tr>
+                                <td>Computer Engineering*^</td>
+                                <td>4300</td>
+                            </tr>
+                            <tr>
+                                <td>Computer Science^</td>
+                                <td>4825</td>
+                            </tr>
+                            <tr>
+                                <td>Creative Arts</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Dance</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Design Studies^</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Earth Science</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Ecology and Evolution^</td>
+                                <td>3800</td>
+                            </tr>
+                            <tr>
+                                <td>Economics, B.A.^</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Economics, B.S.^</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Electrical Engineering*^</td>
+                                <td>3800</td>
+                            </tr>
+                            <tr>
+                                <td>Engineering*^</td>
+                                <td>3900</td>
+                            </tr>
+                            <tr>
+                                <td>English</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>English - Professional and TechnicalWriting</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>English - Creative Writing</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>English - Prep for Teaching, SS</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Environmental Studies, B.A.</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Environmental Studies, B.S.</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Environmental Studies - Prep for Teaching, MS</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Forensic Science - Biology^</td>
+                                <td> 3700</td>
+                            </tr>
+                            <tr>
+                                <td>Forensic Science - Chemistry^</td>
+                                <td>3600</td>
+                            </tr>
+                            <tr>
+                                <td>French</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Geography</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Geology</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Global Studies</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>History</td>
+                                <td>2975</td>
+                            </tr>
+                            <tr>
+                                <td>Hospitality, Tourism and Event Management</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Humanities - American Studies</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Humanities - Liberal Arts</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Humanities - Religious Studies</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Industrial and Systems Engineering*^</td>
+                                <td>3100</td>
+                            </tr>
+                            <tr>
+                                <td>Industrial Tech - Computer Network System Mgmt.^</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Industrial Tech - Manufacturing Systems^</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Japanese</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Journalism</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Justice Studies</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Justice Studies - Criminology^</td>
+                                <td>3200</td>
+                            </tr>
+                            <tr>
+                                <td>Kinesiology^</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Kinesiology - Prep for Teaching, SS</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td> Liberal Studies - Integrated Teacher Ed.</span>
+                                </td>
+                                <td>3050</td>
+                            </tr>
+                            <tr>
+                                <td> Liberal Studies - Integrated Teacher Ed. Spanish Bilingual</span>
+                                </td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Liberal Studies - Prep for Teaching, MS</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Linguistics</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Marine Biology^</td>
+                                <td>3800</td>
+                            </tr>
+                            <tr>
+                                <td>Materials Engineering*^</td>
+                                <td>3300</td>
+                            </tr>
+                            <tr>
+                                <td>Mathematics^</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Mathematics - Prep for Teaching, SS^</td>
+                                <td>3100</td>
+                            </tr>
+                            <tr>
+                                <td>Mechanical Engineering*^</td>
+                                <td>3850</td>
+                            </tr>
+                            <tr>
+                                <td>Meteorology</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Meteorology - Climate Science</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Music, B.A.</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Music, B.M. - Composition</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Music, B.M. -Jazz Studies</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Music, B.M. - Music Education</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Music, B.M. -Performance</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Nutritional Science - Applied Nutrition and Food Science</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Nutritional Science - Food Management</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Organizational Studies</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Packaging</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Philosophy</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Physics, B.A.^</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Physics, B.S.^</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Political Science^</td>
+                                <td>3300</td>
+                            </tr>
+                            <tr>
+                                <td>Pre-Nursing^</td>
+                                <td>4350</td>
+                            </tr>
+                            <tr>
+                                <td>Psychology, B.A.^</td>
+                                <td>3875</td>
+                            </tr>
+                            <tr>
+                                <td>Psychology, B.S.^</td>
+                                <td>3875</td>
+                            </tr>
+                            <tr>
+                                <td>Public Health^</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Public Relations</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Recreation</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Recreation - Recreation Management</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Recreation - Therapeutic Recreation</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Social Science - Prep for Teaching, SS</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Social Work^</td>
+                                <td>3700</td>
+                            </tr>
+                            <tr>
+                                <td>Sociology^</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Sociology - Community Change^</td>
+                                <td>3200</td>
+                            </tr>
+                            <tr>
+                                <td>Sociology - Race and Ethnic Studies</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Sociology - Social Interaction</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Sociology - Women, Gender, Sexuality^</td>
+                                <td>3100</td>
+                            </tr>
+                            <tr>
+                                <td>Software Engineering*^</td>
+                                <td>4350</td>
+                            </tr>
+                            <tr>
+                                <td>Spanish</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Television, Radio, Film</td>
+                                <td>3000</td>
+                            </tr>
+                            <tr>
+                                <td>Theatre Arts</td>
+                                <td>2950</td>
+                            </tr>
+                            <tr>
+                                <td>Undeclared^</td>
+                                <td>3300</td>
+                            </tr>
+                        </tbody>
+                        <tr>
+                            <tfoot>
+                                <td>*College of Engineering - Applicants were ranked on a <a target="_blank" rel="noreferrer" href="https://www.sjsu.edu/admissions/impaction/impactionresultsfreshmen/freshmenimpactioncalc/index"> modified Eligibility Index</a>                                    placing greater weight on the math sections of the SAT and ACT.</td>
+                        </tr>
+                        <tr>
+                            <td>^This major did not have additional capacity to admit applicants as alternate majors.</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p> Adapted with permission from <a target="_blank" rel="noreferrer" href="https://github.com/applecrazy">Aditya Rathod</a> who made the <a target="_blank" rel="noreferrer" href="http://mca.netlify.com">Cal Poly MCA calculator</a> for <a rel="noreferrer"
+                        target="_blank" href="https://www.reddit.com/r/ApplyingToCollege/">r/ApplyingToCollege</a>. <br> &copy All rights reserved | April 6, 2020</p>
+            </div>
+        </footer>
+        <script type="text/javascript" src="./js/vue.js"></script>
+        <script type="text/javascript" src="./js/app.js"></script>
+    </div>
+</body> 
+</html>
