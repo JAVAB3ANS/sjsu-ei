@@ -1,4 +1,4 @@
-# SJSU Eligibility Index Calculator
+# San Jose State University Eligibility Index Calculator
 
 <p align="center">
   <img src="https://www.sjsu.edu/cies/pics/tower_hall_02.jpg">
