@@ -5,6 +5,17 @@ import time
 import requests
 import geopy.distance
 
+"""
+
+1. Instantiate a webdriver object with the Chrome webdriver.
+2. Navigate to the school's admission website.
+3. Extract the table data using the innerHTML attribute.
+4. Calculate the distance between the user and the school using geopy.
+5. Render the index.html template with the table data and the distance.
+6. Run the application in debug mode.
+
+"""
+
 app = Flask(__name__, static_url_path="/static")
 
 @app.route("/")
