@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://javab3ans.github.io/sjsu-ei/sitemap.xml
