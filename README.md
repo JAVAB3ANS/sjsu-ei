@@ -9,7 +9,7 @@
 - This is an eligibility index calculator that you can use to determine your chances of being admitted to your preferred program of study at **SJSU**. The general idea is that if you score higher than the number on the list below the calculator, you will most likely be accepted; however, scoring higher than the eligiblity index does not guarantee acceptance. It simply means that you are among the students who will be considered. If you want to apply to an engineering major, you'll be interested in the **College of Engineering eligbility** index number that comes from the calculation.
  
 ### Author(s):
-- [Jason Vu](https://JAVAB3ANS.github.io/) ~ *Webpage Author, Programmer, & Student 
+- [Jason Vu](https://github.com/javab3ans) ~ *Webpage Author, Programmer, & Student 
   > Reddit: [u/WizardApple](https://reddit.com/user/WizardApple) 
 
 ### License
