@@ -1,44 +1,55 @@
 from flask import Flask, render_template
-from selenium import webdriver   
-from selenium.webdriver.common.by import By 
-import time   
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
 import requests
-import geopy.distance
-
-"""
-
-1. Instantiate a webdriver object with the Chrome webdriver.
-2. Navigate to the school's admission website.
-3. Extract the table data using the innerHTML attribute.
-4. Calculate the distance between the user and the school using geopy.
-5. Render the index.html template with the table data and the distance.
-6. Run the application in debug mode.
-
-"""
+from geopy.geocoders import Nominatim
+from geopy.distance import geodesic
 
 app = Flask(__name__, static_url_path="/static")
 
+def scrape_admission_data():
+    try:
+        options = webdriver.ChromeOptions()
+        options.add_argument("headless")
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        driver = webdriver.Chrome(options=options)
+        driver.get("https://www.sjsu.edu/admissions/impaction/freshmen-impaction-results/index.php")
+        time.sleep(2)
+        program_data = driver.find_element(By.XPATH, "//*[@id=\"sjsu-maincontent\"]/table").get_attribute("innerHTML")
+        driver.quit()
+        return program_data
+    except Exception as e:
+        print(f"Error occurred while scraping admission data: {e}")
+        return None
+
+def get_user_location():
+    try:
+        response = requests.get("http://ip-api.com/json/")
+        location = response.json()
+        if response.status_code == 200 and location.get("status") == "success":
+            user_coords = (location["lat"], location["lon"])
+            return user_coords
+        else:
+            return None
+    except Exception as e:
+        print(f"Error occurred while getting user location: {e}")
+        return None
+
 @app.route("/")
-def index():  
-    # set options for selenium webdriver, instantiate, and deploy to scrape from school's admission site
-    options = webdriver.ChromeOptions()
-    options.add_argument("headless")
-    options.add_experimental_option("excludeSwitches", ["enable-logging"])
-    driver = webdriver.Chrome(options=options)
-    driver.get("https://www.sjsu.edu/admissions/impaction/freshmen-impaction-results/index.php")  
-    
-    # sleep to avoid overdoing server limits and extracting xpath value to get innerhtml attributes
-    time.sleep(2) 
-    program_data = driver.find_element(By.XPATH, "//*[@id=\"sjsu-maincontent\"]/table").get_attribute("innerHTML")
-    
-    # would calculate depending on current user's distance relative to the school
-    location = requests.get("http://ip-api.com/json/").json()  
-    user_cords = (location["lat"], location["lon"])
-    school_cords = (37.3352, -121.8811) 
-    final_distance = round(geopy.distance.distance(user_cords, school_cords).miles) 
- 
-    return render_template("./index.html", program_columns=program_data, mileage=final_distance)   
-  
-if __name__ == "__main__": 
+def index():
+    program_data = scrape_admission_data()
+    if program_data is None:
+        return "Error: Unable to retrieve admission data. Please try again later."
+
+    user_coords = get_user_location()
+    if user_coords is None:
+        return "Error: Unable to retrieve user location. Please try again later."
+
+    school_coords = (37.3352, -121.8811)
+    final_distance = round(geodesic(user_coords, school_coords).miles)
+
+    return render_template("./index.html", program_columns=program_data, mileage=final_distance)
+
+if __name__ == "__main__":
     app.run(debug=False, host="0.0.0.0")
-    # Running the application in debug mode (debug flag is set to True in run) is a security risk if the application is accessible by untrusted parties.
